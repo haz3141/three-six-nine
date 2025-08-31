@@ -86,7 +86,9 @@ adjust_grid_dim() {
 commit_when() {
   local when="$1" msg="$2"
   git add -A
-  GIT_AUTHOR_DATE="$when" GIT_COMMITTER_DATE="$when" git commit -m "$msg"
+  if ! git diff --staged --quiet; then
+    GIT_AUTHOR_DATE="$when" GIT_COMMITTER_DATE="$when" git commit -m "$msg"
+  fi
 }
 
 # Knowledge seeds (bite-sized 3-6-9 material)
@@ -112,7 +114,7 @@ d="$START_DAYS_AGO"
 end_limit=$(( START_DAYS_AGO - DAYS + 1 ))
 while (( d >= end_limit )); do
   d1="$d"; d2=$((d-1))
-  a=$(pick_idx 10)         # 0..9 on day1
+  a=$((1 + $(pick_idx 9))) # 1..9 on day1
   b=$((9 - a))             # remaining on day2
 
   # If we reached the end and only one day is left, push them all into day1
@@ -122,8 +124,10 @@ while (( d >= end_limit )); do
   for ((k=1;k<=a;k++)); do
     slot="${SLOTS[$(pick_idx ${#SLOTS[@]})]}"
     when="$(ts_at "$d1" "$slot")"
-    case "$(pick_idx 4)" in
-      0) i=$(pick_idx ${#titles[@]}); add_note "${titles[$i]}" "${summaries[$i]}" "d${d1}-c${k}" ;;
+    # Always make a change before committing
+    i=$(pick_idx 4)
+    case "$i" in
+      0) j=$(pick_idx ${#titles[@]}); add_note "${titles[$j]}" "${summaries[$j]}" "d${d1}-c${k}" ;;
       1) tweak_css ;;
       2) bump_log "d=$d1 c=$k @ $when" ;;
       3) adjust_grid_dim ;;
@@ -136,8 +140,10 @@ while (( d >= end_limit )); do
     for ((k=1;k<=b;k++)); do
       slot="${SLOTS[$(pick_idx ${#SLOTS[@]})]}"
       when="$(ts_at "$d2" "$slot")"
-      case "$(pick_idx 4)" in
-        0) i=$(pick_idx ${#titles[@]}); add_note "${titles[$i]}" "${summaries[$i]}" "d${d2}-c${k}" ;;
+      # Always make a change before committing
+      i=$(pick_idx 4)
+      case "$i" in
+        0) j=$(pick_idx ${#titles[@]}); add_note "${titles[$j]}" "${summaries[$j]}" "d${d2}-c${k}" ;;
         1) tweak_css ;;
         2) bump_log "d=$d2 c=$k @ $when" ;;
         3) adjust_grid_dim ;;
