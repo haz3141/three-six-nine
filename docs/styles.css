@@ -16,7 +16,13 @@ button:hover{border-color:var(--accent)}
 .cell[data-k="6"]{background:#8fd3ff40}
 .cell[data-k="9"]{background:#c2f0ff40}
 .cell:hover{outline:1px solid var(--accent);opacity:1}
-.notes{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:12px}
-.note{background:var(--panel);border:1px solid #203047;border-radius:12px;padding:12px}
-.note h3{margin:0 0 8px 0;font-size:15px}
-.note p{margin:0;color:var(--muted)}
+.notes{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin-top:16px}
+.note{background:var(--panel);border:1px solid #203047;border-radius:12px;padding:16px;transition:all 0.2s ease}
+.note:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 12px rgba(122,162,255,0.1)}
+.note h3{margin:0 0 12px 0;font-size:16px;color:var(--fg);font-weight:600}
+.note p{margin:0 0 8px 0;color:var(--muted);line-height:1.5}
+.note blockquote{margin:8px 0;padding:8px 12px;background:rgba(122,162,255,0.1);border-left:3px solid var(--accent);border-radius:4px;font-style:italic}
+.note strong{color:var(--accent);font-weight:600}
+.note h4{margin:12px 0 6px 0;color:var(--fg);font-size:14px;font-weight:600}
+.note ul{margin:4px 0;padding-left:16px}
+.note li{margin:2px 0;color:var(--muted);font-size:13px}

@@ -21,10 +21,31 @@
     setVar("--cell", cells[Math.floor(Math.random()*cells.length)]+"px");
     setVar("--radius", rads[Math.floor(Math.random()*rads.length)]+"px");
   });
-  function card(n){ const el=document.createElement("article"); el.className="note";
-    const h=document.createElement("h3"); h.textContent=n.title;
-    const p=document.createElement("p"); p.textContent=n.summary;
-    el.appendChild(h); el.appendChild(p); return el; }
+  function card(n){ 
+    const el=document.createElement("article"); 
+    el.className="note";
+    
+    const h=document.createElement("h3"); 
+    h.textContent=n.title;
+    el.appendChild(h);
+    
+    const p=document.createElement("p"); 
+    p.textContent=n.summary;
+    el.appendChild(p);
+    
+    // Add a link to view the full entry
+    const link=document.createElement("a");
+    link.href="#"; 
+    link.textContent="View full research entry →";
+    link.style.color="var(--accent)";
+    link.style.textDecoration="none";
+    link.style.fontSize="13px";
+    link.style.marginTop="8px";
+    link.style.display="block";
+    el.appendChild(link);
+    
+    return el; 
+  }
   function cssVar(name, fb){
     const v=getComputedStyle(document.documentElement).getPropertyValue(name).trim();
     return v? parseInt(v,10) : fb;
