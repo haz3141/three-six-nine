@@ -1,3 +1,3 @@
-# Digital Roots & 9
+# Tesla 3-6-9 Lore
 
-Why sums of digits mod 9 loop back into 9-centric behavior.
+Collected references and commentary around the 3-6-9 meme.
