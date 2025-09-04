@@ -1,5 +1,5 @@
 :root{
-  --gap:10px; --cell:22px; --r:9; --c:23; --radius:8px;
+  --gap:10px; --cell:22px; --r:9; --c:21; --radius:8px;
   --bg:#0c1118; --panel:#0f1722; --fg:#e6eefc; --muted:#9fb2cc; --accent:#7aa2ff;
 }
 *{box-sizing:border-box}
