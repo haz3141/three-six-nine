@@ -413,6 +413,9 @@ class VortexMathEngine {
         this.addVortexSoundSystem();
         this.createVortexHistory();
         this.implementVortexCompletion();
+        this.createResponsiveVortexGrid();
+        this.addVortexPerformanceOptimization();
+        this.implementVortexAccessibility();
     }
 
     // IMPROVEMENT 2: Quantum Superposition States
@@ -720,6 +723,204 @@ class VortexMathEngine {
     displayDigitalRootChains() {
         // Display digital root chains in console for debugging
         console.log('Digital Root Chains (first 9):', this.digitalRootChains.slice(0, 9));
+    }
+
+    // IMPROVEMENT 7: Responsive Vortex Grid System (3-6-9 adaptive layouts)
+    createResponsiveVortexGrid() {
+        this.responsiveBreakpoints = {
+            mobile: { cols: 9, cellSize: '0.75rem', gap: '0.125rem' },    // 3×3
+            tablet: { cols: 18, cellSize: '1rem', gap: '0.25rem' },       // 3×6
+            desktop: { cols: 27, cellSize: '1.25rem', gap: '0.375rem' },  // 3×9
+            large: { cols: 36, cellSize: '1.5rem', gap: '0.5rem' }        // 3×12
+        };
+        
+        this.setupResponsiveGrid();
+        this.addGridAdaptation();
+    }
+
+    setupResponsiveGrid() {
+        const updateGrid = () => {
+            const width = window.innerWidth;
+            let breakpoint;
+            
+            if (width < 768) breakpoint = this.responsiveBreakpoints.mobile;
+            else if (width < 1024) breakpoint = this.responsiveBreakpoints.tablet;
+            else if (width < 1440) breakpoint = this.responsiveBreakpoints.desktop;
+            else breakpoint = this.responsiveBreakpoints.large;
+            
+            this.generateVortexGrid(breakpoint);
+        };
+        
+        updateGrid();
+        window.addEventListener('resize', updateGrid);
+    }
+
+    addGridAdaptation() {
+        // Add smooth transitions between grid sizes
+        const grid = this.elements.grid;
+        if (grid) {
+            grid.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+        }
+    }
+
+    // IMPROVEMENT 8: Vortex Performance Optimization (3-6-9 efficiency)
+    addVortexPerformanceOptimization() {
+        this.performanceMetrics = {
+            renderTime: 0,
+            memoryUsage: 0,
+            frameRate: 0
+        };
+        
+        this.setupPerformanceMonitoring();
+        this.implementVortexCaching();
+        this.optimizeVortexRendering();
+    }
+
+    setupPerformanceMonitoring() {
+        this.performanceObserver = new PerformanceObserver((list) => {
+            for (const entry of list.getEntries()) {
+                if (entry.entryType === 'measure') {
+                    this.performanceMetrics.renderTime = entry.duration;
+                }
+            }
+        });
+        
+        this.performanceObserver.observe({ entryTypes: ['measure'] });
+    }
+
+    implementVortexCaching() {
+        this.vortexCache = new Map();
+        this.cacheSize = 369; // 3×3×41
+        
+        this.cacheVortexPatterns();
+    }
+
+    cacheVortexPatterns() {
+        for (let i = 0; i < this.cacheSize; i++) {
+            const pattern = this.generateVortexPattern(i);
+            this.vortexCache.set(i, pattern);
+        }
+    }
+
+    optimizeVortexRendering() {
+        // Use requestAnimationFrame for smooth animations
+        this.animationFrame = null;
+        this.isAnimating = false;
+        
+        this.startOptimizedAnimation();
+    }
+
+    startOptimizedAnimation() {
+        if (this.isAnimating) return;
+        
+        this.isAnimating = true;
+        const animate = () => {
+            if (this.isAnimating) {
+                this.updateVortexField();
+                this.animationFrame = requestAnimationFrame(animate);
+            }
+        };
+        
+        animate();
+    }
+
+    // IMPROVEMENT 9: Vortex Accessibility (3-6-9 inclusive design)
+    implementVortexAccessibility() {
+        this.setupKeyboardNavigation();
+        this.addScreenReaderSupport();
+        this.implementHighContrastMode();
+        this.addReducedMotionSupport();
+        this.createVortexFocusManagement();
+    }
+
+    setupKeyboardNavigation() {
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.startVortexIteration();
+            } else if (e.key === 'Escape') {
+                this.resetVortex();
+            } else if (e.key === 'Tab') {
+                this.highlightVortexPath(e.target);
+            }
+        });
+    }
+
+    addScreenReaderSupport() {
+        const announce = (message) => {
+            const announcement = document.createElement('div');
+            announcement.setAttribute('aria-live', 'polite');
+            announcement.setAttribute('aria-atomic', 'true');
+            announcement.className = 'sr-only';
+            announcement.textContent = message;
+            document.body.appendChild(announcement);
+            
+            setTimeout(() => announcement.remove(), 1000);
+        };
+        
+        this.announce = announce;
+    }
+
+    implementHighContrastMode() {
+        const prefersHighContrast = window.matchMedia('(prefers-contrast: high)');
+        
+        const updateContrast = () => {
+            document.body.classList.toggle('high-contrast', prefersHighContrast.matches);
+        };
+        
+        updateContrast();
+        prefersHighContrast.addEventListener('change', updateContrast);
+    }
+
+    addReducedMotionSupport() {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        
+        const updateMotion = () => {
+            if (prefersReducedMotion.matches) {
+                document.body.classList.add('reduced-motion');
+                this.pauseAnimations();
+            } else {
+                document.body.classList.remove('reduced-motion');
+                this.resumeAnimations();
+            }
+        };
+        
+        updateMotion();
+        prefersReducedMotion.addEventListener('change', updateMotion);
+    }
+
+    createVortexFocusManagement() {
+        this.focusableElements = [];
+        this.currentFocusIndex = 0;
+        
+        this.updateFocusableElements();
+        this.setupFocusTrapping();
+    }
+
+    updateFocusableElements() {
+        this.focusableElements = Array.from(
+            document.querySelectorAll('button, input, [tabindex]:not([tabindex="-1"])')
+        );
+    }
+
+    setupFocusTrapping() {
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                e.preventDefault();
+                this.currentFocusIndex = (this.currentFocusIndex + 1) % this.focusableElements.length;
+                this.focusableElements[this.currentFocusIndex].focus();
+            }
+        });
+    }
+
+    pauseAnimations() {
+        document.body.style.setProperty('--vortex-duration', '0.01ms');
+        document.body.style.setProperty('--vortex-spiral-duration', '0.01ms');
+    }
+
+    resumeAnimations() {
+        document.body.style.removeProperty('--vortex-duration');
+        document.body.style.removeProperty('--vortex-spiral-duration');
     }
 }
 

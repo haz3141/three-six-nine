@@ -752,3 +752,412 @@ body {
         padding: 1px 4px;
     }
 }
+
+/* VORTEX IMPROVEMENTS CSS - 9 ENHANCEMENTS */
+
+/* IMPROVEMENT 1: Enhanced Vortex Energy System */
+.vortex-energy-display {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--vortex-surface);
+    padding: 15px;
+    border-radius: 12px;
+    border: 2px solid var(--vortex-accent);
+    z-index: 1000;
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.2);
+    transition: all 0.3s ease;
+}
+
+.energy-levels {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.energy-level {
+    height: 6px;
+    background: var(--vortex-elevated);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.energy-level.active {
+    background: linear-gradient(90deg, var(--vortex-3), var(--vortex-6), var(--vortex-9));
+    box-shadow: 0 0 8px currentColor;
+}
+
+/* IMPROVEMENT 2: Quantum Superposition Display */
+.quantum-display {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: var(--vortex-surface);
+    padding: 15px;
+    border-radius: 12px;
+    border: 2px solid var(--vortex-accent);
+    z-index: 1000;
+    font-family: var(--font-mono);
+    font-size: 12px;
+}
+
+.quantum-state {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.quantum-particle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--vortex-elevated);
+    transition: all 0.5s ease;
+    position: relative;
+}
+
+.quantum-particle.active {
+    background: var(--vortex-accent);
+    box-shadow: 0 0 12px currentColor;
+    animation: quantum-pulse 1s infinite;
+}
+
+/* IMPROVEMENT 3: Sacred Geometry Visualization */
+.sacred-geometry-display {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: var(--vortex-surface);
+    padding: 15px;
+    border-radius: 12px;
+    border: 2px solid var(--vortex-accent);
+    z-index: 1000;
+    font-family: var(--font-mono);
+    font-size: 11px;
+}
+
+.geometry-constant {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    padding: 4px 8px;
+    background: var(--vortex-elevated);
+    border-radius: 6px;
+}
+
+.constant-value {
+    color: var(--vortex-accent);
+    font-weight: 600;
+}
+
+/* IMPROVEMENT 4: Harmonic Resonance Display */
+.harmonic-display {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--vortex-surface);
+    padding: 15px;
+    border-radius: 12px;
+    border: 2px solid var(--vortex-accent);
+    z-index: 1000;
+    font-family: var(--font-mono);
+    font-size: 11px;
+}
+
+.frequency-visualizer {
+    width: 100px;
+    height: 40px;
+    background: var(--vortex-elevated);
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.frequency-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--vortex-3), var(--vortex-6), var(--vortex-9));
+    animation: frequency-wave 2s ease-in-out infinite;
+}
+
+@keyframes frequency-wave {
+    0%, 100% { transform: scaleX(0.5); opacity: 0.7; }
+    50% { transform: scaleX(1); opacity: 1; }
+}
+
+/* IMPROVEMENT 5: Advanced Vortex Canvas */
+.vortex-canvas-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.1;
+}
+
+/* IMPROVEMENT 6: Digital Root Chain Visualization */
+.digital-root-chains {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--vortex-surface);
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid var(--vortex-accent);
+    z-index: 1000;
+    max-width: 400px;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
+}
+
+.chain-item {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 8px;
+    padding: 6px;
+    background: var(--vortex-elevated);
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+}
+
+.chain-number {
+    background: var(--vortex-accent);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.chain-number.final {
+    background: var(--vortex-9);
+    animation: chain-final 0.5s ease-out;
+}
+
+@keyframes chain-final {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* IMPROVEMENT 7: Vortex History Timeline */
+.vortex-history-timeline {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--vortex-surface);
+    padding: 15px;
+    border-radius: 12px;
+    border: 2px solid var(--vortex-accent);
+    z-index: 1000;
+    max-width: 500px;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+    font-family: var(--font-mono);
+    font-size: 10px;
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.history-iteration {
+    color: var(--vortex-accent);
+    font-weight: 600;
+}
+
+.history-root {
+    color: var(--vortex-text);
+    font-weight: 600;
+}
+
+.history-state {
+    color: var(--vortex-muted);
+    font-style: italic;
+}
+
+/* IMPROVEMENT 8: Vortex Completion Celebration */
+.vortex-completion-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.3) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 2000;
+    display: none;
+    animation: completion-celebration 3s ease-out;
+}
+
+@keyframes completion-celebration {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+
+.completion-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--vortex-surface);
+    padding: 30px;
+    border-radius: 20px;
+    border: 3px solid var(--vortex-accent);
+    z-index: 2001;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--vortex-accent);
+    box-shadow: 0 20px 40px rgba(124, 58, 237, 0.3);
+    animation: completion-message 2s ease-out;
+}
+
+@keyframes completion-message {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* IMPROVEMENT 9: Responsive Vortex Grid Enhancements */
+.vortex-grid-responsive {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vortex-grid-responsive.mobile {
+    grid-template-columns: repeat(9, 0.75rem);
+    gap: 0.125rem;
+}
+
+.vortex-grid-responsive.tablet {
+    grid-template-columns: repeat(18, 1rem);
+    gap: 0.25rem;
+}
+
+.vortex-grid-responsive.desktop {
+    grid-template-columns: repeat(27, 1.25rem);
+    gap: 0.375rem;
+}
+
+.vortex-grid-responsive.large {
+    grid-template-columns: repeat(36, 1.5rem);
+    gap: 0.5rem;
+}
+
+/* Accessibility Enhancements */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.high-contrast .vortex-cell {
+    border: 3px solid currentColor;
+    box-shadow: 0 0 0 2px var(--vortex-text);
+}
+
+.high-contrast .vortex-pattern {
+    border-width: 3px;
+    box-shadow: 0 0 0 2px var(--vortex-text);
+}
+
+.reduced-motion * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+}
+
+/* Performance Optimizations */
+.vortex-cell {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.vortex-pattern {
+    will-change: transform, box-shadow;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+/* Focus Management */
+.vortex-cell:focus,
+.vortex-pattern:focus,
+.vortex-btn:focus {
+    outline: 3px solid var(--vortex-accent);
+    outline-offset: 2px;
+}
+
+/* Mobile Responsive Enhancements */
+@media (max-width: 768px) {
+    .vortex-energy-display,
+    .quantum-display,
+    .sacred-geometry-display,
+    .harmonic-display {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        margin: 10px;
+        transform: none;
+    }
+    
+    .digital-root-chains,
+    .vortex-history-timeline {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        transform: none;
+        max-width: none;
+        max-height: none;
+    }
+    
+    .completion-message {
+        font-size: 18px;
+        padding: 20px;
+        margin: 0 20px;
+    }
+}
