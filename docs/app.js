@@ -42,17 +42,23 @@
   document.getElementById("shuffle").addEventListener("click",()=>{
     // 3-6-9 vortex math patterns
     const patterns = [
-      { gap: "9px", cell: "27px", radius: "9px", cols: 27 }, // 3×9 pattern
-      { gap: "6px", cell: "18px", radius: "6px", cols: 18 }, // 3×6 pattern  
-      { gap: "12px", cell: "36px", radius: "12px", cols: 36 }, // 3×12 pattern
-      { gap: "15px", cell: "45px", radius: "15px", cols: 45 }, // 3×15 pattern
+      { gap: "9px", cell: "27px", radius: "9px", cols: 27, name: "3×9 Vortex" }, // 3×9 pattern
+      { gap: "6px", cell: "18px", radius: "6px", cols: 18, name: "3×6 Vortex" }, // 3×6 pattern  
+      { gap: "12px", cell: "36px", radius: "12px", cols: 36, name: "3×12 Vortex" }, // 3×12 pattern
+      { gap: "15px", cell: "45px", radius: "15px", cols: 45, name: "3×15 Vortex" }, // 3×15 pattern
     ];
     
     const pattern = patterns[Math.floor(Math.random() * patterns.length)];
+    
+    // Apply CSS variables
     setVar("--gap", pattern.gap);
     setVar("--cell", pattern.cell);
     setVar("--radius", pattern.radius);
     setVar("--c", pattern.cols);
+    
+    // Update grid container style
+    g.style.gridTemplateColumns = `repeat(${pattern.cols}, ${pattern.cell})`;
+    g.style.gap = pattern.gap;
     
     // Regenerate grid with new pattern
     g.innerHTML = '';
@@ -61,10 +67,22 @@
       for(let c=0;c<newCols;c++){
         const el=document.createElement("div");
         const k=cycle[idx++%cycle.length];
-        el.className="cell"; el.dataset.k=k; g.appendChild(el);
+        el.className="cell"; 
+        el.dataset.k=k; 
+        el.style.width = pattern.cell;
+        el.style.height = pattern.cell;
+        el.style.borderRadius = pattern.radius;
+        g.appendChild(el);
       }
     }
     idx = 0; // Reset cycle index
+    
+    // Show pattern name briefly
+    const originalText = document.getElementById("shuffle").textContent;
+    document.getElementById("shuffle").textContent = pattern.name;
+    setTimeout(() => {
+      document.getElementById("shuffle").textContent = originalText;
+    }, 1000);
   });
   function card(n){ 
     const el=document.createElement("article"); 

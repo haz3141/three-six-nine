@@ -16,9 +16,10 @@ header h1{margin:0 0 4px 0; font-weight:800; letter-spacing:.3px}
 .vortex-arrow{font-size:20px;animation:spin 3s linear infinite}
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 .controls{display:flex;align-items:center;gap:12px;margin:6px 0 20px}
-button{background:var(--panel);color:var(--fg);border:1px solid #233047;border-radius:10px;padding:8px 12px;cursor:pointer}
-button:hover{border-color:var(--accent)}
-.grid{display:grid;grid-template-columns:repeat(var(--c), var(--cell));gap:var(--gap);padding:10px;background:var(--panel);border-radius:14px;border:1px solid #1b2535}
+button{background:var(--panel);color:var(--fg);border:1px solid #233047;border-radius:10px;padding:8px 12px;cursor:pointer;transition:all 0.2s ease}
+button:hover{border-color:var(--accent);transform:scale(1.05)}
+button:active{transform:scale(0.95);background:var(--accent);color:white}
+.grid{display:grid;grid-template-columns:repeat(var(--c), var(--cell));gap:var(--gap);padding:10px;background:var(--panel);border-radius:14px;border:1px solid #1b2535;transition:all 0.3s ease}
 .cell{width:var(--cell);height:var(--cell);border-radius:var(--radius);opacity:.9}
 .cell[data-k="3"]{background:linear-gradient(135deg, var(--three)40, var(--three)20);border:1px solid var(--three)60}
 .cell[data-k="6"]{background:linear-gradient(135deg, var(--six)40, var(--six)20);border:1px solid var(--six)60}
