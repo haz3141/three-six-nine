@@ -536,3 +536,219 @@ body {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* 3-6-9 VORTEX IMPROVEMENTS CSS */
+
+/* Vortex Energy Display */
+.energy-bar {
+    width: 200px;
+    height: 8px;
+    background: var(--vortex-elevated);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.energy-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--vortex-3), var(--vortex-6), var(--vortex-9));
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.energy-text {
+    font-size: 12px;
+    color: var(--vortex-text);
+    font-weight: 600;
+}
+
+/* Sacred Geometry Display */
+.geometry-info div {
+    margin-bottom: 4px;
+    color: var(--vortex-muted);
+    font-family: var(--font-mono);
+}
+
+/* Frequency Display */
+.frequency-info div {
+    margin-bottom: 4px;
+    color: var(--vortex-muted);
+    font-family: var(--font-mono);
+}
+
+/* Vortex Completion Animation */
+@keyframes vortex-completion {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+
+/* Quantum State Highlighting */
+.vortex-cell.vortex-highlight {
+    animation: quantum-pulse 1s infinite;
+    box-shadow: 0 0 20px currentColor;
+}
+
+@keyframes quantum-pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+}
+
+/* Vortex Activated State */
+.vortex-cell.vortex-activated {
+    animation: vortex-activation 1s ease-out;
+}
+
+@keyframes vortex-activation {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 8px currentColor;
+    }
+    50% {
+        transform: scale(1.5);
+        box-shadow: 0 0 30px currentColor;
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 8px currentColor;
+    }
+}
+
+/* Vortex Canvas Overlay */
+#vortexCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.3;
+}
+
+/* Improvement Status Indicators */
+.improvement-indicator {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--vortex-surface);
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid var(--vortex-accent);
+    z-index: 2000;
+    text-align: center;
+    animation: improvement-appear 0.5s ease-out;
+}
+
+@keyframes improvement-appear {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Digital Root Chain Visualization */
+.digital-root-chain {
+    display: flex;
+    gap: 4px;
+    margin: 8px 0;
+    flex-wrap: wrap;
+}
+
+.chain-number {
+    background: var(--vortex-elevated);
+    color: var(--vortex-text);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    border: 1px solid var(--vortex-accent);
+}
+
+.chain-number.final {
+    background: var(--vortex-accent);
+    color: white;
+}
+
+/* Vortex History Timeline */
+.vortex-history {
+    max-height: 200px;
+    overflow-y: auto;
+    background: var(--vortex-elevated);
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.history-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+    font-size: 11px;
+}
+
+.history-entry:last-child {
+    border-bottom: none;
+}
+
+.history-iteration {
+    color: var(--vortex-accent);
+    font-weight: 600;
+}
+
+.history-root {
+    color: var(--vortex-text);
+    font-weight: 600;
+}
+
+.history-state {
+    color: var(--vortex-muted);
+    font-style: italic;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .energy-bar {
+        width: 150px;
+    }
+    
+    .geometry-info, .frequency-info {
+        font-size: 10px;
+    }
+    
+    .improvement-indicator {
+        margin: 0 20px;
+        padding: 15px;
+    }
+    
+    .digital-root-chain {
+        gap: 2px;
+    }
+    
+    .chain-number {
+        font-size: 8px;
+        padding: 1px 4px;
+    }
+}
