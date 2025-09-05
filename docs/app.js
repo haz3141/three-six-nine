@@ -40,14 +40,36 @@
     statsEl.textContent = `${filtered.length} of ${allNotes.length} notes`;
   });
   document.getElementById("shuffle").addEventListener("click",()=>{
-    const gaps=[8,10,12,14], cells=[20,22,24,26], rads=[4,6,8,10];
-    setVar("--gap", gaps[Math.floor(Math.random()*gaps.length)]+"px");
-    setVar("--cell", cells[Math.floor(Math.random()*cells.length)]+"px");
-    setVar("--radius", rads[Math.floor(Math.random()*rads.length)]+"px");
+    // 3-6-9 vortex math patterns
+    const patterns = [
+      { gap: "9px", cell: "27px", radius: "9px", cols: 27 }, // 3×9 pattern
+      { gap: "6px", cell: "18px", radius: "6px", cols: 18 }, // 3×6 pattern  
+      { gap: "12px", cell: "36px", radius: "12px", cols: 36 }, // 3×12 pattern
+      { gap: "15px", cell: "45px", radius: "15px", cols: 45 }, // 3×15 pattern
+    ];
+    
+    const pattern = patterns[Math.floor(Math.random() * patterns.length)];
+    setVar("--gap", pattern.gap);
+    setVar("--cell", pattern.cell);
+    setVar("--radius", pattern.radius);
+    setVar("--c", pattern.cols);
+    
+    // Regenerate grid with new pattern
+    g.innerHTML = '';
+    const newCols = pattern.cols;
+    for(let r=0;r<rows;r++){
+      for(let c=0;c<newCols;c++){
+        const el=document.createElement("div");
+        const k=cycle[idx++%cycle.length];
+        el.className="cell"; el.dataset.k=k; g.appendChild(el);
+      }
+    }
+    idx = 0; // Reset cycle index
   });
   function card(n){ 
     const el=document.createElement("article"); 
     el.className="note";
+    el.style.cursor = "pointer";
     
     const h=document.createElement("h3"); 
     h.textContent=n.title;
@@ -65,6 +87,13 @@
       badge.style.cssText = "background: var(--accent); color: white; padding: 2px 6px; border-radius: 12px; font-size: 11px; font-weight: bold; margin-top: 8px; display: inline-block;";
       el.appendChild(badge);
     }
+    
+    // Make card clickable to view full entry
+    el.addEventListener('click', () => {
+      const dayNum = dayMatch ? dayMatch[1] : '1';
+      const slug = `d${dayNum}-c1`; // Default to first commit of the day
+      window.open(`./notes/${slug}/index.md`, '_blank');
+    });
     
     return el; 
   }

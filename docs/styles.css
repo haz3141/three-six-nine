@@ -1,20 +1,28 @@
 :root{
   --gap:12px; --cell:22px; --r:9; --c:23; --radius:10px;
   --bg:#0c1118; --panel:#0f1722; --fg:#e6eefc; --muted:#9fb2cc; --accent:#7aa2ff;
+  --three:#ff6b6b; --six:#4ecdc4; --nine:#45b7d1;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.6 ui-sans-serif,system-ui,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
 .wrap{max-width:1000px;margin:40px auto;padding:0 16px}
 header h1{margin:0 0 4px 0; font-weight:800; letter-spacing:.3px}
-.tag{margin:0 0 18px 0;color:var(--muted)}
+.tag{margin:0 0 12px 0;color:var(--muted)}
+.vortex-math{display:flex;align-items:center;justify-content:center;gap:8px;margin:8px 0 18px 0}
+.math-symbol{font-size:24px;font-weight:bold;padding:4px 8px;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center}
+.math-symbol:nth-child(1){background:var(--three);color:white}
+.math-symbol:nth-child(2){background:var(--six);color:white}
+.math-symbol:nth-child(3){background:var(--nine);color:white}
+.vortex-arrow{font-size:20px;animation:spin 3s linear infinite}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 .controls{display:flex;align-items:center;gap:12px;margin:6px 0 20px}
 button{background:var(--panel);color:var(--fg);border:1px solid #233047;border-radius:10px;padding:8px 12px;cursor:pointer}
 button:hover{border-color:var(--accent)}
 .grid{display:grid;grid-template-columns:repeat(var(--c), var(--cell));gap:var(--gap);padding:10px;background:var(--panel);border-radius:14px;border:1px solid #1b2535}
 .cell{width:var(--cell);height:var(--cell);border-radius:var(--radius);opacity:.9}
-.cell[data-k="3"]{background:#6aa9ff40}
-.cell[data-k="6"]{background:#8fd3ff40}
-.cell[data-k="9"]{background:#c2f0ff40}
+.cell[data-k="3"]{background:linear-gradient(135deg, var(--three)40, var(--three)20);border:1px solid var(--three)60}
+.cell[data-k="6"]{background:linear-gradient(135deg, var(--six)40, var(--six)20);border:1px solid var(--six)60}
+.cell[data-k="9"]{background:linear-gradient(135deg, var(--nine)40, var(--nine)20);border:1px solid var(--nine)60}
 .cell:hover{outline:1px solid var(--accent);opacity:1}
 .notes{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin-top:16px}
 .note{background:var(--panel);border:1px solid #203047;border-radius:12px;padding:16px;transition:all 0.2s ease}
